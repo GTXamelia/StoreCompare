@@ -7,11 +7,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class Cex {
+public class Google {
 
 	public static void main(int amount, String gameName) throws IOException {
 
-		String url = "https://ie.webuy.com/search/index.php?stext="+gameName+"&num="+amount;  // or whatever goes here
+		String url = "https://www.google.ie/search?q="+gameName+"&num="+amount;  // or whatever goes here
 		Document doc = Jsoup.connect(url).followRedirects(false).userAgent("Mozilla").timeout(60000).get();
 		
 		System.out.println("Sending request..." + "\"" + url + "\"");
@@ -19,20 +19,15 @@ public class Cex {
 		//System.out.println(doc);
 		
 		//parsing HTML after examining DOM
-		Elements els  = doc.select("div.searchRecord");
+		Elements els  = doc.select("div.g");
 		
 		for(Element el : els)
 		{
-			
 			if(el.getElementsByTag("h3").text() != " "){
-				System.out.println("Game : " + el.getElementsByTag("h1").text());
-				System.out.println("Console : " +  el.getElementsByTag("p").text());
-				System.out.println("Link : " + el.getElementsByTag("a").text() + "\n");
+				System.out.println("Title : " + el.getElementsByTag("h3").text());
+				System.out.println("Site : " +  el.getElementsByTag("cite").text());
+				System.out.println("Abstract : " + el.getElementsByTag("span").text() + "\n");
 			}
-			
 		}
-
-		
 	}
-
 }
