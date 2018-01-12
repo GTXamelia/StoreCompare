@@ -40,7 +40,7 @@ class CexThread extends Thread {
 	public void run() {
 
 		try {
-			Cex.main(gameName);
+			MusicMagPieEbayStore.main(gameName);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
