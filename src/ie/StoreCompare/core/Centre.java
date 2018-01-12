@@ -3,7 +3,7 @@ package ie.StoreCompare.core;
 import java.io.IOException;
 import java.util.Scanner;
 
-import ie.gmit.sw.main.FileThread;
+import ie.StoreCompare.store.Cex;
 
 public class Centre {
 
@@ -22,6 +22,8 @@ public class Centre {
 		System.out.println("\n> Game to Search: ");
 		gameName = reader.nextLine();
 		
+		gameName.replace(" ", "+");
+		
 		CexThread = new CexThread(amount, gameName);
 		CexThread.start();
 		
@@ -34,12 +36,17 @@ class CexThread extends Thread {
 	String gameName;
 	
 	CexThread(int a, String g) {
-		file = f;
-		shingleCount = s;
+		amount = a;
+		gameName = g;
 	}
 	
 	public void run() {
 
-		//TODO stuff here
+		try {
+			Cex.main(amount, gameName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
