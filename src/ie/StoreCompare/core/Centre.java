@@ -18,7 +18,7 @@ public class Centre {
 		//amount = reader.nextInt();
 		//reader.nextLine();
 		
-		System.out.println("\n> Game to Search: ");
+		System.out.println("> Game to Search: ");
 		gameName = reader.nextLine();
 		
 		gameName.replace(" ", "+");

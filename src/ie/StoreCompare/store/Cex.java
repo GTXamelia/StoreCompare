@@ -25,11 +25,11 @@ public class Cex {
 				String itemType = el.getElementsByTag("p").text();
 				String itemTypeRem = itemType.substring(itemType.indexOf("/")+1, itemType.length());  
 				
-				System.out.println("Game : " + el.getElementsByTag("h1").text());
+				System.out.println("Game :     " + el.getElementsByTag("h1").text());
 				System.out.println("Console : " +  itemTypeRem);
-				System.out.println("Link : https://ie.webuy.com" + el.getElementsByTag("a").attr("href"));
-				System.out.println("Buy : " + el.select("div.priceTxt").get(1).text());
-				System.out.println("Sell : " + el.select("div.priceTxt").get(2).text() + "\n");
+				System.out.println("Link :     https://ie.webuy.com" + el.getElementsByTag("a").attr("href"));
+				System.out.println("Buy :      " + el.select("div.priceTxt").get(1).text());
+				System.out.println("Sell :     " + el.select("div.priceTxt").get(2).text() + "\n");
 			}
 		}
 	}
