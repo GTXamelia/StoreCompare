@@ -24,10 +24,12 @@ public class Cex {
 		for(Element el : els)
 		{
 			
-			//Print title, site and abstract
-			System.out.println("Title : " + el.getElementsByTag("h3").text());
-			System.out.println("Site : " +  el.getElementsByTag("cite").text());
-			System.out.println("Abstract : " + el.getElementsByTag("span").text() + "\n");
+			if(el.getElementsByTag("h3").text() != " "){
+				System.out.println("Title : " + el.getElementsByTag("h3").text());
+				System.out.println("Site : " +  el.getElementsByTag("cite").text());
+				System.out.println("Abstract : " + el.getElementsByTag("span").text() + "\n");
+			}
+			
 		}
 
 		
