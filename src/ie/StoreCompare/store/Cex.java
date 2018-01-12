@@ -27,7 +27,7 @@ public class Cex {
 			if(el.getElementsByTag("h3").text() != " "){
 				System.out.println("Game : " + el.getElementsByTag("h1").text());
 				System.out.println("Console : " +  el.getElementsByTag("p").text());
-				System.out.println("Link : " + el.getElementsByTag("a").text());
+				System.out.println("Link : https://ie.webuy.com" + el.getElementsByTag("a").attr("href"));
 				System.out.println("Buy : " + el.select("div.priceTxt").get(1).text());
 				System.out.println("Sell : " + el.select("div.priceTxt").get(2).text() + "\n");
 				
