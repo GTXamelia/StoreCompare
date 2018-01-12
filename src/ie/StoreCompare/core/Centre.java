@@ -3,6 +3,7 @@ package ie.StoreCompare.core;
 import java.io.IOException;
 import java.util.Scanner;
 
+import ie.StoreCompare.storage.ConsoleChoice;
 import ie.StoreCompare.store.Cex;
 
 public class Centre {
@@ -23,6 +24,10 @@ public class Centre {
 		gameName = reader.nextLine();
 		
 		gameName.replace(" ", "+");
+		
+		int consoleID = ConsoleChoice.main();
+		
+		System.out.println(consoleID);
 		
 		CexThread = new CexThread(amount, gameName);
 		CexThread.start();

@@ -16,9 +16,6 @@ public class Google {
 		
 		System.out.println("Sending request..." + "\"" + url + "\"");
 		
-		//System.out.println(doc);
-		
-		//parsing HTML after examining DOM
 		Elements els  = doc.select("div.g");
 		
 		for(Element el : els)
