@@ -3,6 +3,7 @@ package ie.StoreCompare.core;
 import java.io.IOException;
 import java.util.Scanner;
 import ie.StoreCompare.store.Cex;
+import ie.StoreCompare.store.MusicMagPieEbayStore;
 
 public class Centre {
 
@@ -11,7 +12,6 @@ public class Centre {
 		Scanner reader = new Scanner(System.in);
 		CexThread CexThread;
 		
-		int amount = 0;
 		String gameName;
 		
 		//System.out.println("> Amount to Display: ");
@@ -21,7 +21,7 @@ public class Centre {
 		System.out.println("> Game to Search: ");
 		gameName = reader.nextLine();
 		
-		gameName.replace(" ", "+");
+		gameName = gameName.replaceAll(" ", "+");
 		
 		CexThread = new CexThread(gameName);
 		CexThread.start();
