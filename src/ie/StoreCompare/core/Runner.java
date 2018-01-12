@@ -7,5 +7,4 @@ public class Runner {
 		Centre.main(args);
 
 	}
-
 }
