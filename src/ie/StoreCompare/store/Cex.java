@@ -27,12 +27,14 @@ public class Cex {
 			if(el.getElementsByTag("h3").text() != " "){
 				System.out.println("Game : " + el.getElementsByTag("h1").text());
 				System.out.println("Console : " +  el.getElementsByTag("p").text());
-				System.out.println("Link : " + el.getElementsByTag("a").text() + "\n");
+				System.out.println("Link : " + el.getElementsByTag("a").text());
+				System.out.println("Buy : " + el.select("div.priceTxt").get(1).text());
+				System.out.println("Sell : " + el.select("div.priceTxt").get(2).text() + "\n");
+				
+				//System.out.println("Price : " + el.select("div:contains(WeBuy for cash )").get(1).text().replaceAll("WeBuy for cash ", url) + "\n");
+				
+				//System.out.println("city,country"".*,", ""));
 			}
-			
 		}
-
-		
 	}
-
 }
