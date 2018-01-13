@@ -1,20 +1,34 @@
 package ie.StoreCompare.storage;
 
 public class Items {
-	
+
 	private String name;
-	private String price;
-	
+	private double price;
+
+	public Items(String name, double price) {
+		super();
+		this.name = name;
+		this.price = price;
+	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPrice() {
+
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+
+	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	@Override
+    public String toString() {
+        return "[" + name + "; " + price + "]";
+     }
 }

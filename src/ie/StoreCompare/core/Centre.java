@@ -54,8 +54,6 @@ public class Centre {
 			else{
 				System.out.println("\nPlease select a valid option");
 			}
-			
-			
 		}
 		
 		reader.close();
