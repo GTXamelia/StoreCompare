@@ -13,14 +13,16 @@ import ie.StoreCompare.storage.Items;
 
 public class Cex {
 	
-	public static void main(String gameName) throws IOException {
+	public static void main(String gameName, List<Items> itemList) throws IOException {
 		
-		List<Items> itemList = new ArrayList<Items>();
+		String name;
+		String gameType;
+		double price;
+		double postage = 1.50;
 		
 		String url = "https://ie.webuy.com/search/index.php?stext="+gameName;
+		// System.out.println("\nSending request..." + "\"" + url + "\"\n");
 		Document doc = Jsoup.connect(url).followRedirects(false).userAgent("Mozilla").timeout(60000).get();
-		
-		System.out.println("\nSending request..." + "\"" + url + "\"\n");
 		
 		Elements els  = doc.select("div.searchRecord");
 		
@@ -28,33 +30,13 @@ public class Cex {
 		{
 			if(el.getElementsByTag("h3").text() != " "){
 				
-				/*
-				String itemType = el.getElementsByTag("p").text();
-				String itemTypeRem = itemType.substring(itemType.indexOf("/")+1, itemType.length());  
-				System.out.println("Game :     " + el.getElementsByTag("h1").text());
-				System.out.println("Console : " +  itemTypeRem);
-				System.out.println("Link :     https://ie.webuy.com" + el.getElementsByTag("a").attr("href"));
-				System.out.println("Buy :      " + el.select("div.priceTxt").get(0).text());
-				System.out.println("Sell :     " + el.select("div.priceTxt").get(1).text() + " " + el.select("div.priceTxt").get(2).text() + "\n");
+				name = (el.getElementsByTag("h1").text()).replaceAll("\\(.*?\\) ?", "");
+				price =  Double.parseDouble((el.select("div.priceTxt").get(0).text()).replaceAll("[^0-9.]", ""));
 				
-				System.out.println("Game :     " + el.getElementsByTag("h1").text());
-				System.out.println("Buy :      " + el.select("div.priceTxt").get(0).text());
-				*/
+				gameType = (el.getElementsByTag("p").text().substring(el.getElementsByTag("p").text().indexOf("/")+1, el.getElementsByTag("p").text().length())).replaceAll("Games", "");  
 				
-				String name = el.getElementsByTag("h1").text();
-				double price = Double.parseDouble(el.select("div.priceTxt").get(0).text().replaceAll("[^0-9.]", ""));
-				
-				//System.out.println(name + "\n" + price + "\n");
-				
-				itemList.add(new Items(name, price));
+				itemList.add(new Items((name + "(" + gameType + ")"), (price + postage)));
 			}
 		}
-		DisplayList(itemList);
 	}
-	
-	public static void DisplayList(List<Items> itemList) throws IOException {
-		
-		System.out.println(itemList);
-	}
-	
 }

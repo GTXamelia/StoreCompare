@@ -1,15 +1,25 @@
 package ie.StoreCompare.store;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import ie.StoreCompare.storage.Items;
+
 public class MusicMagPieEbayStore {
 
 	public static void main(String gameName) throws IOException {
+		
+		List<Items> itemList = new ArrayList<Items>();
+		
+		String name = null;
+		double price = 0;
+		double postage = 0;
 		
 		String url = "http://www.ebay.ie/sch/i.html?LH_BIN=1&_nkw=" + gameName + "&_ssn=musicmagpie";
 		Document doc = Jsoup.connect(url).userAgent("Mozilla").timeout(60000).get();
@@ -18,18 +28,16 @@ public class MusicMagPieEbayStore {
 		
 		Elements els  = doc.select("li.sresult.lvresult");
 		
-		//System.out.println(els);
-		
 		for(Element el : els)
 		{
-			System.out.println("Title : " + el.getElementsByTag("h3").text());
+			name = (el.getElementsByTag("h3").text()).replaceAll("VideoGames", "");
+			price =  Double.parseDouble((el.getElementsByClass("lvprice prc").text()).replaceAll("[^0-9.]", ""));
+			postage =  Double.parseDouble((el.getElementsByClass("fee").text()).replaceAll("[^0-9.]", ""));
 			
-			int k = el.getElementsByTag("span").text().indexOf("+", el.getElementsByTag("span").text().indexOf("+") + 1);
-			String res = el.getElementsByTag("span").text().substring(0,k);
-			
-			System.out.println("Price : " +  ((res).replaceAll("EUR ", "€")).replaceAll("   ", " ")+"\n");
-			//System.out.println("Abstract : " + el.getElementsByTag("span").text() + "\n");
+			System.out.println("Name: " + name);
+			System.out.println("Price: " + price);
+			System.out.println("Postage: " + postage + "\n");
 		}
-
+		itemList.add(new Items(name, (price + postage)));
 	}
 }
