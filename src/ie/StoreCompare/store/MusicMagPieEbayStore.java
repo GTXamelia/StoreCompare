@@ -34,9 +34,6 @@ public class MusicMagPieEbayStore {
 			price =  Double.parseDouble((el.getElementsByClass("lvprice prc").text()).replaceAll("[^0-9.]", ""));
 			postage =  Double.parseDouble((el.getElementsByClass("fee").text()).replaceAll("[^0-9.]", ""));
 			
-			System.out.println("Name: " + name);
-			System.out.println("Price: " + price);
-			System.out.println("Postage: " + postage + "\n");
 		}
 		itemList.add(new Items(name, (price + postage)));
 	}
