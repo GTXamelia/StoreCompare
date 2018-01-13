@@ -13,9 +13,8 @@ import ie.StoreCompare.storage.Items;
 
 public class MusicMagPieEbayStore {
 
-	public static void main(String gameName) throws IOException {
+	public static void main(String gameName, List<Items> itemList) throws IOException {
 		
-		List<Items> itemList = new ArrayList<Items>();
 		
 		String name = null;
 		double price = 0;
@@ -34,7 +33,7 @@ public class MusicMagPieEbayStore {
 			price =  Double.parseDouble((el.getElementsByClass("lvprice prc").text()).replaceAll("[^0-9.]", ""));
 			postage =  Double.parseDouble((el.getElementsByClass("fee").text()).replaceAll("[^0-9.]", ""));
 			
+			itemList.add(new Items(name, (price + postage)));
 		}
-		itemList.add(new Items(name, (price + postage)));
 	}
 }

@@ -72,6 +72,7 @@ public class Centre {
 			}
 		}
 		
+		// Basic output of object list array
 		System.out.println(itemList);
 		
 		reader.close();
@@ -100,15 +101,17 @@ class CexThread extends Thread {
 
 class MusicMagPieThread extends Thread {
  	String gameName;
+ 	List<Items> itemList;
 	
- 	MusicMagPieThread(String g, List<Items> itemList) {
+ 	MusicMagPieThread(String g, List<Items> i) {
 		gameName = g;
+		itemList = i;
 	}
 	
 	public void run() {
 
 		try {
-			MusicMagPieEbayStore.main(gameName);
+			MusicMagPieEbayStore.main(gameName, itemList);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
