@@ -22,8 +22,12 @@ public class MusicMagPieEbayStore {
 		
 		for(Element el : els)
 		{
-			System.out.println("Title : " + el.getElementsByTag("h3").text()+"\n");
-			//System.out.println("Site : " +  el.getElementsByTag("cite").text());
+			System.out.println("Title : " + el.getElementsByTag("h3").text());
+			
+			int k = el.getElementsByTag("span").text().indexOf("+", el.getElementsByTag("span").text().indexOf("+") + 1);
+			String res = el.getElementsByTag("span").text().substring(0,k);
+			
+			System.out.println("Price : " +  ((res).replaceAll("EUR ", "€")).replaceAll("   ", " ")+"\n");
 			//System.out.println("Abstract : " + el.getElementsByTag("span").text() + "\n");
 		}
 
