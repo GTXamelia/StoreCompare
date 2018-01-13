@@ -33,7 +33,7 @@ public class Cex {
 				name = (el.getElementsByTag("h1").text()).replaceAll("\\(.*?\\) ?", "");
 				price =  Double.parseDouble((el.select("div.priceTxt").get(0).text()).replaceAll("[^0-9.]", ""));
 				
-				gameType = (el.getElementsByTag("p").text().substring(el.getElementsByTag("p").text().indexOf("/")+1, el.getElementsByTag("p").text().length())).replaceAll("Games", "");  
+				gameType = ((el.getElementsByTag("p").text().substring(el.getElementsByTag("p").text().indexOf("/")+1, el.getElementsByTag("p").text().length())).replaceAll("Games", "")).replaceAll(" ", "");  
 				
 				itemList.add(new Items((name + "(" + gameType + ")"), (price + postage)));
 			}
