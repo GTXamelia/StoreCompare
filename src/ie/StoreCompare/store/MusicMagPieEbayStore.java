@@ -1,7 +1,6 @@
 package ie.StoreCompare.store;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jsoup.Jsoup;
@@ -21,9 +20,8 @@ public class MusicMagPieEbayStore {
 		double postage = 0;
 		
 		String url = "http://www.ebay.ie/sch/i.html?LH_BIN=1&_nkw=" + gameName + "&_ssn=musicmagpie";
-		Document doc = Jsoup.connect(url).userAgent("Mozilla").timeout(60000).get();
-		
 		System.out.println("Sending request..." + "\"" + url + "\"");
+		Document doc = Jsoup.connect(url).userAgent("Mozilla").timeout(60000).get();
 		
 		Elements els  = doc.select("li.sresult.lvresult");
 		

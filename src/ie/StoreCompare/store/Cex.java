@@ -1,7 +1,6 @@
 package ie.StoreCompare.store;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jsoup.Jsoup;
@@ -21,22 +20,18 @@ public class Cex {
 		double postage = 1.50;
 		
 		String url = "https://ie.webuy.com/search/index.php?stext="+gameName;
-		// System.out.println("\nSending request..." + "\"" + url + "\"\n");
+		System.out.println("\nSending request..." + "\"" + url + "\"\n");
 		Document doc = Jsoup.connect(url).followRedirects(false).userAgent("Mozilla").timeout(60000).get();
 		
 		Elements els  = doc.select("div.searchRecord");
 		
 		for(Element el : els)
 		{
-			if(el.getElementsByTag("h3").text() != " "){
-				
-				name = (el.getElementsByTag("h1").text()).replaceAll("\\(.*?\\) ?", "");
-				price =  Double.parseDouble((el.select("div.priceTxt").get(0).text()).replaceAll("[^0-9.]", ""));
-				
-				gameType = ((el.getElementsByTag("p").text().substring(el.getElementsByTag("p").text().indexOf("/")+1, el.getElementsByTag("p").text().length())).replaceAll("Games", "")).replaceAll(" ", "");  
-				
-				itemList.add(new Items((name + "(" + gameType + ")"), (price + postage)));
-			}
+			name = (el.getElementsByTag("h1").text()).replaceAll("\\(.*?\\) ?", "");
+			price =  Double.parseDouble((el.select("div.priceTxt").get(0).text()).replaceAll("[^0-9.]", ""));
+			gameType = ((el.getElementsByTag("p").text().substring(el.getElementsByTag("p").text().indexOf("/")+1, el.getElementsByTag("p").text().length())).replaceAll("Games", "")).replaceAll(" ", "");  
+			
+			itemList.add(new Items((name + "(" + gameType + ")"), (price + postage)));
 		}
 	}
 }
