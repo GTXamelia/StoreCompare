@@ -29,6 +29,6 @@ public class Items {
 
 	@Override
 	public String toString() {
-		return "[" + name + "; " + price + "]";
+		return "\nName:  " + name + "\nPrice: €" + price + "\n";
 	}
 }
