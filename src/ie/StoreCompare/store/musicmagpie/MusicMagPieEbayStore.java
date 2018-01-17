@@ -1,4 +1,4 @@
-package ie.StoreCompare.store;
+package ie.StoreCompare.store.musicmagpie;
 
 import java.io.IOException;
 import java.util.List;

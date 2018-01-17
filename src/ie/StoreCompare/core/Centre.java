@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import ie.StoreCompare.storage.Items;
-import ie.StoreCompare.store.Cex;
-import ie.StoreCompare.store.MusicMagPieEbayStore;
+import ie.StoreCompare.store.cex.Cex;
+import ie.StoreCompare.store.musicmagpie.MusicMagPieEbayStore;
 
 public class Centre {
 
