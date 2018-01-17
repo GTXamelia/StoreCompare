@@ -41,7 +41,6 @@ public class Centre {
 			if(menu >= 1 && menu <= 3){
 				System.out.println("> Game to Search: ");
 				gameName = reader.nextLine();
-				gameName = gameName.replaceAll(" ", "+");
 				
 				if(menu == 1){
 					MusicMagPieThread = new MusicMagPieThread(gameName, itemList);

@@ -14,12 +14,14 @@ public class MusicMagPieEbayStore {
 
 	public static void main(String gameName, List<Items> itemList) throws IOException {
 		
-		
 		String name = null;
 		double price = 0;
 		double postage = 0;
+		String url = "http://www.ebay.ie/sch/i.html?LH_BIN=1&_nkw=";
 		
-		String url = "http://www.ebay.ie/sch/i.html?LH_BIN=1&_nkw=" + gameName + "&_ssn=musicmagpie";
+		gameName = gameName.replaceAll(" ", "+");
+		url= url + gameName + "&_ssn=musicmagpie";
+		
 		System.out.println("\nSending request..." + "\"" + url + "\"");
 		Document doc = Jsoup.connect(url).userAgent("Mozilla").timeout(60000).get();
 		

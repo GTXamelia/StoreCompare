@@ -18,8 +18,10 @@ public class Cex {
 		String gameType;
 		double price;
 		double postage = 1.50;
+		String url = "https://ie.webuy.com/search?stext=";
 		
-		String url = "https://ie.webuy.com/search/index.php?stext="+gameName;
+		gameName = gameName.replaceAll(" ", "%20");
+		url = url + gameName;
 		System.out.println("\nSending request..." + "\"" + url + "\"\n");
 		Document doc = Jsoup.connect(url).followRedirects(false).userAgent("Mozilla").timeout(60000).get();
 		
