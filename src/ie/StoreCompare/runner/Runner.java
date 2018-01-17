@@ -1,4 +1,6 @@
-package ie.StoreCompare.core;
+package ie.StoreCompare.runner;
+
+import ie.StoreCompare.core.Centre;
 
 public class Runner {
 
