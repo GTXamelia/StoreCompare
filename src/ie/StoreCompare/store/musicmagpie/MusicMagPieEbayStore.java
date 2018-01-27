@@ -20,7 +20,7 @@ public class MusicMagPieEbayStore {
 		String url = "http://www.ebay.ie/sch/i.html?LH_BIN=1&_nkw=";
 		
 		gameName = gameName.replaceAll(" ", "+");
-		url= url + gameName + "&_ssn=musicmagpie";
+		url = url + gameName + "&_ssn=musicmagpie";
 		
 		System.out.println("\nSending request..." + "\"" + url + "\"");
 		Document doc = Jsoup.connect(url).userAgent("Mozilla").timeout(60000).get();
